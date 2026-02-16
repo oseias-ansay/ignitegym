@@ -1,26 +1,27 @@
-
-import { useFonts,
+/* eslint-disable camelcase */
+import { StatusBar } from 'react-native'
+import {
+  useFonts,
+  Roboto_700Bold,
   Roboto_400Regular,
-  Roboto_700Bold 
-} from '@expo-google-fonts/roboto';
-import {GluestackUIProvider, Text, Center} from '@gluestack-ui/themed';
-import { config } from './config/gluestack-ui.config';
-import { Loading } from './src/compenents/Loading';
-import { Signin } from './src/screens/Signin';
-export default function App() {
-  const [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold
-  });
+} from '@expo-google-fonts/roboto'
+import { GluestackUIProvider } from '@gluestack-ui/themed'
+import { config } from './config/gluestack-ui.config'
+import { SignIn } from './src/screens/Signin'
+import { Loading } from './src/compenents/Loading'
 
-  if (!fontsLoaded) {
-    return <Loading />;
-  }
+export default function App() {
+  const [fontsLoaded] = useFonts({ Roboto_700Bold, Roboto_400Regular })
+
   return (
     <GluestackUIProvider config={config}>
-      <Center flex={1} bg='$gray500'>
-        {fontsLoaded ? <Signin /> : null}
-      </Center>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent
+      />
+
+      {fontsLoaded ? <SignIn /> : <Loading />}
     </GluestackUIProvider>
-  );
+  )
 }
