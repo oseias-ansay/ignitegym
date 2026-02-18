@@ -6,7 +6,7 @@ import {
   Roboto_400Regular,
 } from '@expo-google-fonts/roboto'
 import { GluestackUIProvider } from '@gluestack-ui/themed'
-import { config } from './config/gluestack-ui.config'
+import { gluestackUIConfig } from './config/gluestack-ui.config'
 import { Loading } from './src/compenents/Loading'
 import { Routes } from '@routes/index'
 
@@ -14,7 +14,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_700Bold, Roboto_400Regular })
 
   return (
-    <GluestackUIProvider config={config}>
+    <GluestackUIProvider config={gluestackUIConfig}>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
